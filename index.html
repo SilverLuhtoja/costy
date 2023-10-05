@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Costy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <section class="add_category"> 
+        <h2>Add Category</h2>
+        <input id="add_category_value" name="category" type="text">
+        <button id="add_category_btn" type="submit">ADD</button>
+    </section>
+     <section class="add_category"> 
+        <h2>Categories</h2>
+        <div id="categories"></div>
+    </section>
+<!-- 
+    <section id="category_modal" class="hidden">
+      <div id="modal_title">Category: something</div>
+      <div id="modal_current_filters">current filters:</div>
+      <input id="modal_add_category_value" name="category" type="text" placeholder="add new filter...">
+      <button id="modal_add_category_btn" type="submit">ADD FILTER</button>
+      <button id="modal_close_btn">CLOSE</button>
+    </section> -->
+  </body>
+  <script type="module" src="./src/scripts/script.js"></script>
+</html>
