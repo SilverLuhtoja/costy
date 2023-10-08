@@ -3,48 +3,60 @@ function removeOldModal() {
   if (old_section) old_section.remove();
 }
 
-function createClosingButton(){
-    let btn = document.createElement('button');
-    btn.setAttribute('id', 'modal_close_btn');
-    btn.innerText = "CLOSE"
-    btn.addEventListener('click', () => removeOldModal());
-    return btn
+async function updateFilters(category_name) {
+  let data = await api.optionsData();
+  document.getElementById(
+    'modal_current_filters'
+  ).innerHTML = `Current filters: ${createFilterElements(data[category_name])}`;
 }
 
-function addFilterButton(category_name) {
+function createFilterElements(filters) {
+  return filters.map(filter => `<div class="filter">${filter}</div>`).join('');
+}
+
+function createClosingButton() {
   let btn = document.createElement('button');
-  btn.setAttribute('id', 'modal_add_category_btn');
-  btn.innerText = 'ADD FILTER';
-  btn.addEventListener('click', () => {
-// add filter to category
-    let valueEl = document.getElementById('modal_add_category_value');
-    console.log(valueEl.value);
-    api.send('saveCategoryFilter', [category_name, valueEl.value]);
-    valueEl.value = '';
-  });
+  btn.setAttribute('id', 'modal_close_btn');
+  btn.innerText = 'X';
+  btn.addEventListener('click', () => removeOldModal());
   return btn;
 }
 
+function createFilterInput(category_name) {
+  let wrapper = document.createElement('div');
+  wrapper.setAttribute('id', 'modal_input_wrapper');
+  wrapper.innerHTML = `
+    <input id="modal_add_category_value" name="category" type="text" placeholder="add new filter...">
+  `;
+  let btn = document.createElement('button');
+  btn.setAttribute('id', 'modal_add_category_btn');
+  btn.innerText = '+';
+  btn.addEventListener('click', e => {
+    let valueEl = document.getElementById('modal_add_category_value');
+    api.send('saveCategoryFilter', [category_name, valueEl.value]);
+    valueEl.value = '';
+    updateFilters(category_name);
+  });
+  wrapper.append(btn);
+  return wrapper;
+}
+
 function createModal(category_name, category_filters) {
-  //  remove old modal
   removeOldModal();
 
   let section = document.createElement('section');
   section.setAttribute('id', 'category_modal');
   section.innerHTML = `
-    <div id="modal_title">Category: ${category_name}</div>
-    <div id="modal_current_filters">current filters: ${category_filters}</div>
-    <input id="modal_add_category_value" name="category" type="text" placeholder="add new filter...">
+    <div id="modal_title">Category: <p class="title">${category_name}</p></div>
+    <div id="modal_current_filters" class="flex">Current filters: ${createFilterElements(
+      category_filters
+    )}</div>
   `;
-  section.append(addFilterButton(category_name));
+
+  section.append(createFilterInput(category_name));
   section.append(createClosingButton());
 
   document.body.append(section);
-
-  // get element after it has appended to docuement
-  document
-    .getElementById('modal_close_btn')
-    .addEventListener('click', () => removeOldModal());
 }
 
 export default createModal;

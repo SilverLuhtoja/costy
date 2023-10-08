@@ -1,8 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const electronReload = require('electron-reload');
 const path = require('path');
-const _ = require('./listeners');
-electronReload(__dirname);
+const _ = require('./src/core/listeners');
+
+// FOR FAST STYLING
+// const electronReload = require('electron-reload');
+// electronReload(__dirname);
 
 const isDev = process.env.NODE_END !== 'production';
 

@@ -1,8 +1,23 @@
+@import './src/styles/categories.css';
+@import './src/styles/dataTable.css';
+
+:root {
+  --main_color: #361b1b;
+  --main_off_color: rgb(114, 44, 44);
+
+  --main_btn_color: rgb(87, 146, 87);
+  --main_off_btn_color: rgb(148, 190, 149);
+  --second_btn_color: wheat;
+  --second_off_btn_color: rgb(216, 192, 149);
+
+  --modal_bg_color: rgb(114, 105, 105);
+}
+
 * {
   /* margin: 0; */
   /* padding: 0; */
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
@@ -10,32 +25,46 @@ body {
   color: rgb(155, 79, 79);
 }
 
-#categories {
+.flex {
   display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
-#category {
-  display: flex;
-  justify-content: center;
-  place-items: center;
-  width: 4rem;
-  height: 2rem;
-  border: 2px solid rgb(146, 75, 75);
-  margin: 0.25em;
-  cursor: pointer;
+.hidden {
+  display: none;
 }
 
-#category:hover {
-  background: rgba(112, 59, 59, 0.349);
+/* OVERVIEW */
+
+#overview img {
+  height: 2.5em;
+  width: 2.5em;
+  margin: 0.5em;
+  /* margin: auto 0 ; */
 }
 
-#category_modal {
-  background: rgb(87, 78, 78);
-  width: 50%;
-  height: 50vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 4px rgb(54, 54, 54) double;
+.budget_card {
+  margin: 0.5em;
+  height: 16em;
+  width: 16em;
+  border: 2px solid var(--second_btn_color);
+  /* border-radius: 10px; */
+}
+
+.budget_card_title {
+  padding: 0.2em 1em;
+  background: var(--second_btn_color);
+}
+.stats {
+  background-color: var(--second_btn_color);
+  margin: 0.5em;
+  text-align: center;
+}
+
+.budget_procent {
+  font-size: 3em;
+  margin: auto;
+  text-align: center;
 }

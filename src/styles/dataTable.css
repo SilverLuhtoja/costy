@@ -1,0 +1,27 @@
+#file_wrapper{
+  margin: 1em;
+}
+
+#show_table_btn{
+  padding: 0.5em 1em ;
+  background: var(--second_btn_color);
+}
+
+#csvFileInput{
+  font-size: 1.25rem;
+}
+
+#dataTable{
+  background: rgb(114, 44, 44);
+}
+
+th,td{
+  min-width: 100px;
+  margin: 0.2em;
+  padding: 0.25em;
+  background: var(--second_btn_color);
+}
+
+th{
+  background: var(--second_off_btn_color);
+}

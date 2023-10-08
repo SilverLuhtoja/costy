@@ -11,26 +11,44 @@
       content="default-src 'self'; script-src 'self'"
     />
     <title>Costy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+
+    <script defer type="module" src="./src/scripts/categories.js"></script>
+    <script defer src="./src/scripts/table.js"></script>
   </head>
   <body>
-    <section class="add_category"> 
-        <h2>Add Category</h2>
-        <input id="add_category_value" name="category" type="text">
-        <button id="add_category_btn" type="submit">ADD</button>
+    <section>
+      <h2>Add Category:</h2>
+      <input id="add_category_value" name="category" type="text" />
+      <button id="add_category_btn" type="submit">ADD</button>
     </section>
-     <section class="add_category"> 
-        <h2>Categories</h2>
-        <div id="categories"></div>
+
+    <section>
+      <h2>Existing Categories:</h2>
+      <div id="categories"></div>
     </section>
-<!-- 
-    <section id="category_modal" class="hidden">
-      <div id="modal_title">Category: something</div>
-      <div id="modal_current_filters">current filters:</div>
-      <input id="modal_add_category_value" name="category" type="text" placeholder="add new filter...">
-      <button id="modal_add_category_btn" type="submit">ADD FILTER</button>
-      <button id="modal_close_btn">CLOSE</button>
-    </section> -->
+
+    <section id="file_wrapper">
+      <p>Choose file to process:</p>
+      <input type="file" id="csvFileInput" />
+      <button id="show_table_btn" class="hidden">SHOW CONTENT</button>
+      <table id="dataTable" class="hidden"></table>
+    </section>
+
+    <section id="overview" class="flex">
+      <h1>OVERVIEW</h1>
+    </section>
   </body>
-  <script type="module" src="./src/scripts/script.js"></script>
 </html>
+
+<!-- TESTING -->
+
+<!-- <section id="category_modal" class="hidden">
+    <div id="modal_title">Category: <p class="title">something</p></div>
+    <div id="modal_current_filters">Current filters:</div>
+    <div id="modal_input_wrapper">
+      <input id="modal_add_category_value" name="category" type="text" placeholder="add new filter...">
+      <button id="modal_add_category_btn" type="submit">+</button>
+    </div>
+    <button id="modal_close_btn">X</button>
+  </section> -->

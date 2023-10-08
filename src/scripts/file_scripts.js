@@ -1,18 +1,12 @@
-const fs = require('fs');
+const { FILE_PATH } = require('../constants');
 
-let student = {
-  name: 'Mike',
-  age: 23,
-  gender: 'Male',
-  department: 'English',
-  car: 'Honda',
-};
+async function getOptionsData() {
+  return fetch(FILE_PATH)
+    .then(response => response.json())
+    .then(data => data)
+    .catch(error => {
+      console.error('Error loading JSON:', error);
+    });
+}
 
-let data = JSON.stringify(student, null, 2);
-
-fs.writeFile('student-3.json', data, err => {
-  if (err) throw err;
-  console.log('Data written to file');
-});
-
-console.log('This is after the write call');
+module.exports = { getOptionsData };

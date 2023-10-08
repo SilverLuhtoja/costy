@@ -13,7 +13,7 @@ class Storage {
       return rawdata;
     }
   }
-  
+
   get(key) {
     let pth = this.fileName;
     if (fs.existsSync(pth)) {
