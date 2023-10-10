@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css" />
 
     <script defer type="module" src="./src/scripts/categories.js"></script>
-    <script defer src="./src/scripts/table.js"></script>
+    <script defer type="module" src="./src/scripts/table.js"></script>
   </head>
   <body>
     <section>
@@ -35,9 +35,11 @@
       <table id="dataTable" class="hidden"></table>
     </section>
 
-    <section id="overview" class="flex">
-      <h1>OVERVIEW</h1>
-    </section>
+    <div class="flex">
+      <h1>OVERVIEW:</h1>
+      <h1 id="monthly_income"></h1>
+    </div>
+    <section id="overview" class="flex"></section>
   </body>
 </html>
 

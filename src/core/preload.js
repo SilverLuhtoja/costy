@@ -7,7 +7,7 @@ contextBridge.exposeInMainWorld('api', {
   filePath: FILE_PATH,
   send: (channel, data) => ipcRenderer.send(channel, data),
   on: (channel, func) =>
-    ipcRenderer.send(channel, (event, ...args) => func(...args)),
+    ipcRenderer.on(channel, (event, ...args) => func(...args)),
   optionsData: async () => {
     return await getOptionsData();
   },

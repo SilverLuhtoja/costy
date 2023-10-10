@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, webContents } = require('electron');
 const path = require('path');
 const _ = require('./src/core/listeners');
 

@@ -48,7 +48,7 @@ body {
 .budget_card {
   margin: 0.5em;
   height: 16em;
-  width: 16em;
+  min-width: 16em;
   border: 2px solid var(--second_btn_color);
   /* border-radius: 10px; */
 }
@@ -63,8 +63,15 @@ body {
   text-align: center;
 }
 
-.budget_procent {
+.budget_percent {
   font-size: 3em;
   margin: auto;
   text-align: center;
+}
+
+#monthly_income {
+  margin-left: 1rem;
+  color: rgb(38, 170, 38);
+  font-style: normal;
+  font-weight: 100;
 }
