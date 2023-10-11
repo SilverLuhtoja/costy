@@ -1,9 +1,9 @@
 import createModal from './modal.js';
-import createCategoryCards from './overview_cards.js';
+import { createCategoryCards } from './overview_cards.js';
 let categories = document.getElementById('categories');
 let add_category_btn = document.getElementById('add_category_btn');
 
-async function loadCategories() {
+export async function loadCategories() {
   let data = await api.optionsData();
   categories.innerHTML = Object.keys(data)
     .map(key => `<div id='category'>${key}</div>`)
@@ -19,15 +19,15 @@ async function loadCategories() {
 
 add_category_btn.addEventListener('click', async () => {
   let category_value_element = document.getElementById('add_category_value');
+  let isFileSelected =
+    document.getElementById('csvFileInput').files.length != 0;
   api.send('saveCategory', category_value_element.value);
   category_value_element.value = '';
 
   let data = await api.optionsData();
-  let categories = Object.keys(data);
-  document.getElementById('categories').innerHTML = categories
+  document.getElementById('categories').innerHTML = Object.keys(data)
     .map(key => `<div id='category'>${key}</div>`)
     .join('');
-  createCategoryCards(categories);
+  if (!isFileSelected) createCategoryCards(data);
+  loadCategories();
 });
-
-loadCategories();

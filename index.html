@@ -15,29 +15,42 @@
 
     <script defer type="module" src="./src/scripts/categories.js"></script>
     <script defer type="module" src="./src/scripts/table.js"></script>
+    <script defer type="module" src="./src/core/renderer.js"></script>
   </head>
   <body>
-    <section>
-      <h2>Add Category:</h2>
-      <input id="add_category_value" name="category" type="text" />
-      <button id="add_category_btn" type="submit">ADD</button>
-    </section>
-
-    <section>
-      <h2>Existing Categories:</h2>
-      <div id="categories"></div>
+    <section id="categories_section">
+      <div class="flex">
+        <h2>Add Category:</h2>
+        <div id="categories" class="flex"></div>
+      </div>
+      <div id="categories_input">
+        <input id="add_category_value" name="category" type="text" />
+        <button id="add_category_btn" type="submit">+</button>
+      </div>
     </section>
 
     <section id="file_wrapper">
-      <p>Choose file to process:</p>
-      <input type="file" id="csvFileInput" />
-      <button id="show_table_btn" class="hidden">SHOW CONTENT</button>
+      <div class="fle">
+        <label class="custom-file-upload">
+          <h3>
+            Choose file to process:
+            <img src="./src/icons/upload-file-svgrepo-com.svg" />
+          </h3>
+          <input type="file" id="csvFileInput" />
+        </label>
+        <button id="show_table_btn" class="hidden">SHOW CONTENT</button>
+      </div>
       <table id="dataTable" class="hidden"></table>
     </section>
 
+    <h1>OVERVIEW:</h1>
     <div class="flex">
-      <h1>OVERVIEW:</h1>
+      <h3>INCOME:</h3>
       <h1 id="monthly_income"></h1>
+    </div>
+    <div class="flex">
+      <h3>SPENT PERCENTAGE:</h3>
+      <h1 id="monthly_percent"></h1>
     </div>
     <section id="overview" class="flex"></section>
   </body>

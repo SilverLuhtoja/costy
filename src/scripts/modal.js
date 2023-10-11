@@ -33,7 +33,9 @@ function createFilterInput(category_name) {
   btn.innerText = '+';
   btn.addEventListener('click', e => {
     let valueEl = document.getElementById('modal_add_category_value');
-    api.send('saveCategoryFilter', [category_name, valueEl.value]);
+    if (valueEl.value.trim() != '') {
+      api.send('saveCategoryFilter', [category_name, valueEl.value]);
+    }
     valueEl.value = '';
     updateFilters(category_name);
   });

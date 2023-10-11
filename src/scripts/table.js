@@ -4,20 +4,24 @@ const show_table_btn = document.getElementById('show_table_btn');
 const data_table = document.getElementById('dataTable');
 const csvFileInput = document.getElementById('csvFileInput');
 const table = document.getElementById('dataTable');
+const fileUpload = document.querySelector('.custom-file-upload');
 const COLUMN_DATA = {
-  Kuupäev: 0,
-  SaajaMaksja: 1,
-  Selgitus: 2,
-  Summa: 3,
-  DeebetKreedit: 4,
+  Reatüüp: 0,
+  Kuupäev: 1,
+  SaajaMaksja: 2,
+  Selgitus: 3,
+  Summa: 4,
+  DeebetKreedit: 5,
 };
 
 show_table_btn.addEventListener('click', () => {
   data_table.classList.toggle('hidden');
   if (data_table.classList.contains('hidden')) {
     show_table_btn.innerText = 'SHOW CONTENT';
+    fileUpload.classList.remove('hidden');
   } else {
     show_table_btn.innerText = 'HIDE CONTENT';
+    fileUpload.classList.add('hidden');
   }
 });
 
@@ -50,8 +54,11 @@ async function calculateExpenses(data) {
 
   for (let i = 1; i < data.length; i++) {
     for (const [key, values] of entries) {
-      if (isMatch(values, data[i])) {
-        const number = Number(data[i][COLUMN_DATA['Summa']]);
+      if (isMatch(values, data[i]) && values.length > 0) {
+        let number = Number(data[i][COLUMN_DATA['Summa']]);
+        if (data[i][COLUMN_DATA['DeebetKreedit']] == 'K' && key != 'INCOME') {
+          number = -number;
+        }
         SumUpCategories[key] = (SumUpCategories[key] || 0) + number;
       }
     }
@@ -87,7 +94,7 @@ function createTableData(data) {
 }
 
 function getCleanedUpList(data) {
-  const ROWS_TO_INCLUDE = [2, 3, 4, 5, 7];
+  const ROWS_TO_INCLUDE = [1, 2, 3, 4, 5, 7];
   const lines = data.split('\n');
   return lines.map(line => {
     let splitedLine = cleanUpData(line).split(';');

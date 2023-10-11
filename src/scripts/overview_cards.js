@@ -1,4 +1,11 @@
-function createBudgetCard(category_name, spentValue = null) {
+let monthlyIncome = document.getElementById('monthly_income');
+let monthlyPercent = document.getElementById('monthly_percent');
+
+function createBudgetCard(
+  category_name,
+  spentValue = null,
+  spentPercentage = null
+) {
   const budget_card = document.createElement('div');
   budget_card.innerHTML = `
     <div class="budget_card">
@@ -11,7 +18,7 @@ function createBudgetCard(category_name, spentValue = null) {
             <p>${spentValue ? spentValue : ''}</p>
         </div>
         <h1 class="budget_percent">${
-          spentValue ? calculatePercentageFromTotal(spentValue) : 100
+          spentPercentage ? spentPercentage : 100
         }%</h1>
     </div> 
     `;
@@ -19,38 +26,37 @@ function createBudgetCard(category_name, spentValue = null) {
   return budget_card;
 }
 
-function createCategoryCards(data) {
+export function createCategoryCards(data) {
   let section = document.getElementById('overview');
   section.innerHTML = '';
   Object.keys(data).forEach(category => {
-    section.append(createBudgetCard(category));
+    if (category != 'INCOME') section.append(createBudgetCard(category));
   });
 }
 
 function updateBudgetCards(calculatedData) {
   let section = document.getElementById('overview');
   section.innerHTML = '';
+  let sumPercentage = 0;
   Object.keys(calculatedData).forEach(key => {
     if (key == 'INCOME') {
-      // section.append(createBudgetCard(key, calculatedData[key]));
-      document.getElementById('month_income').innerText = calculatedData[key];
+      monthlyIncome.innerText = calculatedData[key];
     } else {
-      section.append(createBudgetCard(key, calculatedData[key]));
+      let spentPercentage = calculatePercentageFromTotal(calculatedData[key]);
+      sumPercentage += Number(spentPercentage);
+      section.append(
+        createBudgetCard(key, calculatedData[key], spentPercentage)
+      );
     }
   });
+  monthlyPercent.innerText = sumPercentage.toFixed(2) + '%';
 }
 
 function calculatePercentageFromTotal(spentValue) {
-  const totalIncome = document.getElementById('monthly_income');
-  if (totalIncome != null) {
-    let totalValue = totalIncome.innerText;
-    console.log(totalValue);
+  if (monthlyIncome != null) {
+    let totalValue = monthlyIncome.innerText;
     return ((spentValue * 100) / totalValue).toFixed(2);
   }
 }
-
-document.addEventListener('DOMContentLoaded', async function () {
-  createCategoryCards(await api.optionsData());
-});
 
 export default updateBudgetCards;

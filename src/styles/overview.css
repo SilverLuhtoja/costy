@@ -1,0 +1,33 @@
+#overview img {
+  height: 2.5em;
+  width: 2.5em;
+  margin: 0.5em;
+}
+
+.budget_card {
+  margin: 0.5em;
+  height: 16em;
+  min-width: 16em;
+  border: 2px solid var(--second_btn_color);
+  /* border-radius: 10px; */
+}
+
+.budget_card_title {
+  padding: 0.2em 1em;
+  background: var(--second_btn_color);
+}
+.budget_card_title h2{
+  margin: 0.5em 0 ;
+}
+
+.stats {
+  background-color: var(--second_btn_color);
+  margin: 0.5em;
+  text-align: center;
+}
+
+.budget_percent {
+  font-size: 3em;
+  margin: auto;
+  text-align: center;
+}

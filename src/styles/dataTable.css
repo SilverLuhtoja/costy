@@ -1,27 +1,57 @@
-#file_wrapper{
+input[type='file'] {
+  display: none;
+}
+
+.custom-file-upload {
+  padding: 0.5em 1em;
+  font-size: 1.25rem;
+  border: var(--main_border);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.custom-file-upload:hover {
+  background: rgba(22, 22, 22, 0.151);
+}
+
+.custom-file-upload img {
+  width: 2rem;
+  margin-bottom: -0.5rem;
+}
+
+#monthly_income,
+#monthly_percent {
+  margin-left: 1rem;
+  color: rgb(38, 170, 38);
+  font-style: normal;
+  font-weight: 100;
+}
+
+#file_wrapper {
   margin: 1em;
 }
 
-#show_table_btn{
-  padding: 0.5em 1em ;
+#show_table_btn {
+  padding: 0.75em 1em;
   background: var(--second_btn_color);
 }
 
-#csvFileInput{
+#csvFileInput {
   font-size: 1.25rem;
 }
 
-#dataTable{
+#dataTable {
   background: rgb(114, 44, 44);
 }
 
-th,td{
+th,
+td {
   min-width: 100px;
   margin: 0.2em;
   padding: 0.25em;
   background: var(--second_btn_color);
 }
 
-th{
+th {
   background: var(--second_off_btn_color);
 }

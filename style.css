@@ -1,7 +1,9 @@
 @import './src/styles/categories.css';
 @import './src/styles/dataTable.css';
+@import './src/styles/overview.css';
 
 :root {
+  --main_font_color: rgb(146, 75, 75);
   --main_color: #361b1b;
   --main_off_color: rgb(114, 44, 44);
 
@@ -10,19 +12,21 @@
   --second_btn_color: wheat;
   --second_off_btn_color: rgb(216, 192, 149);
 
+  --main_border: 2px solid var(--main_font_color);
+
   --modal_bg_color: rgb(114, 105, 105);
 }
 
 * {
-  /* margin: 0; */
-  /* padding: 0; */
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
 
 body {
   background: #333;
-  color: rgb(155, 79, 79);
+  color: var(--main_font_color);
 }
 
 .flex {
@@ -34,44 +38,4 @@ body {
 
 .hidden {
   display: none;
-}
-
-/* OVERVIEW */
-
-#overview img {
-  height: 2.5em;
-  width: 2.5em;
-  margin: 0.5em;
-  /* margin: auto 0 ; */
-}
-
-.budget_card {
-  margin: 0.5em;
-  height: 16em;
-  min-width: 16em;
-  border: 2px solid var(--second_btn_color);
-  /* border-radius: 10px; */
-}
-
-.budget_card_title {
-  padding: 0.2em 1em;
-  background: var(--second_btn_color);
-}
-.stats {
-  background-color: var(--second_btn_color);
-  margin: 0.5em;
-  text-align: center;
-}
-
-.budget_percent {
-  font-size: 3em;
-  margin: auto;
-  text-align: center;
-}
-
-#monthly_income {
-  margin-left: 1rem;
-  color: rgb(38, 170, 38);
-  font-style: normal;
-  font-weight: 100;
 }
