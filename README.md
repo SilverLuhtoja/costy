@@ -22,7 +22,7 @@ TODO:
 3. Possible to pick and choose columns from csv (only if working with other csv files)
 4. Possible to filter by date (combining previous files together?)
 5. Images/Icons for some categories
-6. Filter and Categories are changeable and removable
+6. ~~Filter and Categories are changeable and removable~~
 7. Maybe combine budgetCards, adding filters and showing all spendings in one card ???
 
 BUGS:

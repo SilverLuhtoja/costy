@@ -10,3 +10,13 @@ ipcMain.on('saveCategoryFilter', (event, keyAndValue) => {
   old_list = storage.get(key);
   storage.set(key, [...old_list, value]);
 });
+
+ipcMain.on('removeCategory', (event, categoryValue) => {
+  storage.remove(categoryValue);
+});
+
+ipcMain.on('removeCategoryFilter', (event, object) => {
+  const key = Object.keys(object)[0];
+  const value = object[key];
+  storage.remove(key, value);
+});

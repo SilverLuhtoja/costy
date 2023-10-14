@@ -11,8 +11,8 @@ const isDev = process.env.NODE_END !== 'production';
 const createWindow = () => {
   const win = new BrowserWindow({
     title: 'Costy',
-    width: isDev ? 1000 : 800,
-    height: 600,
+    width: isDev ? 1200 : 1000,
+    height: 800,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
@@ -21,7 +21,7 @@ const createWindow = () => {
   });
 
   //   Open DevTools
-  if (isDev) win.webContents.openDevTools();
+  // if (isDev) win.webContents.openDevTools();
   win.loadFile('index.html');
 };
 
