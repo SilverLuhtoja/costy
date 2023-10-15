@@ -13,7 +13,8 @@ TODO:
 2. ~~Save Filters for categories~~
 3. ~~Import CSV and show it on table~~
 4. ~~Filter and calculate imported data and show~~
-5. Everything is updateable from UI
+5. ~~Spendings can be seen on budgetcard by category~~
+6. Everything is updateable from UI
 
 - EXTRA
 
@@ -24,5 +25,6 @@ TODO:
 5. Images/Icons for some categories
 6. ~~Filter and Categories are changeable and removable~~
 7. Maybe combine budgetCards, adding filters and showing all spendings in one card ???
+8. ~~Add confirmation for safety when deleting category~~
 
 BUGS:

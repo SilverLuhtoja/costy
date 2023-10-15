@@ -75,8 +75,11 @@ function createClosingButton() {
 function createRemoveCategoryButton(category_name) {
   let btn = document.createElement('button');
   btn.setAttribute('id', 'modal_category_remove_btn');
-  btn.innerText = '-';
-  btn.addEventListener('click', () => removeCategory(category_name));
+  btn.innerText = 'Delete Category';
+  btn.addEventListener('click', () => {
+    let answer = confirm('Are you sure you want to delete category ? ');
+    if (answer) removeCategory(category_name);
+  });
 
   return btn;
 }
@@ -114,7 +117,10 @@ function createModal(category_name, category_filters) {
   let section = document.createElement('section');
   section.setAttribute('id', 'category_modal');
   section.innerHTML = `
+  <div class='flex'>
+    <img src="./src/icons/home.png" />
     <div id="modal_title">Category: <p class="title">${category_name}</p></div>
+  </div>
   `;
 
   section.append(createFilterElements(category_name, category_filters));

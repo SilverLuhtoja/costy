@@ -15,6 +15,7 @@
   --main_border: 2px solid var(--main_font_color);
 
   --modal_bg_color: rgb(114, 105, 105);
+  --transition: 1s all ease;
 }
 
 * {

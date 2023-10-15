@@ -51,6 +51,7 @@ async function calculateExpenses(data) {
   const optionsData = await api.optionsData();
   let entries = Object.entries(optionsData);
   let SumUpCategories = {};
+  let overAll = {};
 
   for (let i = 1; i < data.length; i++) {
     for (const [key, values] of entries) {
@@ -59,7 +60,16 @@ async function calculateExpenses(data) {
         if (data[i][COLUMN_DATA['DeebetKreedit']] == 'K' && key != 'INCOME') {
           number = -number;
         }
-        SumUpCategories[key] = (SumUpCategories[key] || 0) + number;
+        if (!SumUpCategories[key]) {
+          SumUpCategories[key] = {
+            total: 0,
+            details: [],
+          };
+        }
+
+        SumUpCategories[key]['total'] += number;
+        // SumUpCategories[key] = (SumUpCategories[key] || 0) + number;
+        SumUpCategories[key]['details'].push(data[i]);
       }
     }
   }
