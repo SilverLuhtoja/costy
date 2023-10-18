@@ -2,6 +2,10 @@
   padding: 1rem;
 }
 
+#categories {
+  min-height: 2rem;
+}
+
 #categories_input {
   margin: 1rem 0;
 }

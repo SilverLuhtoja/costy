@@ -1,12 +1,12 @@
 let monthlyIncome = document.getElementById('monthly_income');
 let monthlyPercent = document.getElementById('monthly_percent');
+let monthlyAmount = document.getElementById('monthly_amount');
 
 function createDetails(spentDetails) {
   const div = document.createElement('div');
   div.setAttribute('class', 'details hidden');
   spentDetails.forEach(item => {
     let detail = document.createElement('div');
-    detail.setAttribute('class', 'flex');
     detail.innerHTML = `
       <p>${item[1]}</p>
       <p>${item[2]}</p>
@@ -50,13 +50,6 @@ function createBudgetCard(
     budget_card.querySelector('.details').classList.toggle('hidden')
   );
 
-  // budget_card.addEventListener('mouseenter' , () => {
-  //   budget_card.querySelector('.details').classList.remove('hidden');
-  // })
-  //   budget_card.addEventListener('mouseleave', () => {
-  //     budget_card.querySelector('.details').classList.add('hidden');
-  //   });
-
   return budget_card;
 }
 
@@ -71,6 +64,7 @@ export function createCategoryCards(data) {
 function updateBudgetCards(calculatedData) {
   let section = document.getElementById('overview');
   let sumPercentage = 0;
+  let sumAmount = 0;
   section.innerHTML = '';
   Object.keys(calculatedData).forEach(key => {
     let spentTotal = calculatedData[key]['total'];
@@ -80,12 +74,14 @@ function updateBudgetCards(calculatedData) {
     } else {
       let spentPercentage = calculatePercentageFromTotal(spentTotal);
       sumPercentage += Number(spentPercentage);
+      sumAmount += Number(spentTotal);
       section.append(
         createBudgetCard(key, spentTotal, spentDetails, spentPercentage)
       );
     }
   });
   monthlyPercent.innerText = sumPercentage.toFixed(2) + '%';
+  monthlyAmount.innerText = sumAmount + ' EUR /';
 }
 
 function calculatePercentageFromTotal(spentValue) {

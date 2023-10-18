@@ -1,5 +1,6 @@
 import createModal from './modal.js';
 import { createCategoryCards } from './overview_cards.js';
+
 let categories = document.getElementById('categories');
 let add_category_btn = document.getElementById('add_category_btn');
 let files_input = document.getElementById('csvFileInput');

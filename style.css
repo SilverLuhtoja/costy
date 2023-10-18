@@ -40,3 +40,8 @@ body {
 .hidden {
   display: none;
 }
+
+.chart-container {
+  width: 30%;
+  display: inline-block;
+}

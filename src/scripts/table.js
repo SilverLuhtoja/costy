@@ -40,6 +40,7 @@ csvFileInput.addEventListener('change', function (event) {
 
       createTableData(cleanedUpList);
       updateBudgetCards(calculations);
+      createDonutGraph(calculations);
     };
     reader.readAsText(file);
   } else {
@@ -121,4 +122,23 @@ function cleanUpData(line) {
     }
   });
   return line.replaceAll('"', '');
+}
+
+function createDonutGraph(data) {
+  let context = document.getElementById('myChart');
+  new Chart(context, {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(data).map(key => key),
+      datasets: [
+        {
+          label: 'Spending per month',
+          data: Object.values(data).map(value => value.total),
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  });
 }

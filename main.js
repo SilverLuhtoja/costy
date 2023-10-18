@@ -11,17 +11,17 @@ const isDev = process.env.NODE_END !== 'production';
 const createWindow = () => {
   const win = new BrowserWindow({
     title: 'Costy',
-    width: isDev ? 1200 : 1000,
-    height: 800,
+    width: isDev ? 2000 : 1000,
+    height: 1200,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: true,
-      preload: path.resolve('./src/core/preload.js'),
+      // contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
   //   Open DevTools
-  // if (isDev) win.webContents.openDevTools();
+  if (isDev) win.webContents.openDevTools();
   win.loadFile('index.html');
 };
 

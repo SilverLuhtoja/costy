@@ -7,7 +7,7 @@ ipcMain.on('saveCategory', (event, categoryValue) => {
 
 ipcMain.on('saveCategoryFilter', (event, keyAndValue) => {
   let [key, value] = keyAndValue;
-  old_list = storage.get(key);
+  let old_list = storage.get(key);
   storage.set(key, [...old_list, value]);
 });
 

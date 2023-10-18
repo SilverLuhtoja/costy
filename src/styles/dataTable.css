@@ -20,7 +20,8 @@ input[type='file'] {
 }
 
 #monthly_income,
-#monthly_percent {
+#monthly_percent,
+#monthly_amount {
   margin-left: 1rem;
   color: rgb(38, 170, 38);
   font-style: normal;

@@ -3,24 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net/npm/chart.js "
+    />
     <title>Costy</title>
     <link rel="stylesheet" href="style.css" />
-
-    <script defer type="module" src="./src/scripts/categories.js"></script>
-    <script defer type="module" src="./src/scripts/table.js"></script>
-    <script defer type="module" src="./src/core/renderer.js"></script>
+    <script defer type="module" src="./src/scripts/scriptLoader.js"></script>
   </head>
+
   <body>
     <section id="categories_section">
+      <button id="event_test" type="submit">event</button>
       <div class="flex">
-        <h2>Add Category:</h2>
+        <h2>Categories:</h2>
         <div id="categories" class="flex"></div>
       </div>
       <div id="categories_input">
@@ -29,29 +28,39 @@
       </div>
     </section>
 
-    <section id="file_wrapper">
-      <div class="fle">
-        <label class="custom-file-upload">
-          <h3>
-            Choose file to process:
-            <img src="./src/icons/upload-file-svgrepo-com.svg" />
-          </h3>
-          <input type="file" id="csvFileInput" />
-        </label>
-        <button id="show_table_btn" class="hidden">SHOW CONTENT</button>
-      </div>
-      <table id="dataTable" class="hidden"></table>
-    </section>
+    <div class="flex">
+      <section id="file_wrapper">
+        <div class="flex">
+          <label class="custom-file-upload">
+            <h3>
+              Choose file to process:
+              <img src="./src/icons/upload-file-svgrepo-com.svg" />
+            </h3>
+            <input type="file" id="csvFileInput" />
+          </label>
+          <button id="show_table_btn" class="hidden">SHOW CONTENT</button>
+        </div>
+        <table id="dataTable" class="hidden"></table>
+      </section>
 
-    <h1>OVERVIEW:</h1>
-    <div class="flex">
-      <h3>INCOME:</h3>
-      <h1 id="monthly_income"></h1>
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
-    <div class="flex">
-      <h3>SPENT PERCENTAGE:</h3>
-      <h1 id="monthly_percent"></h1>
+
+    <div id="over_view_wrapper">
+      <h1>OVERVIEW:</h1>
+      <div class="flex">
+        <h2>INCOME:</h2>
+        <h2 id="monthly_income"></h2>
+      </div>
+      <div class="flex">
+        <h2>SPENT AMOUNT / PERCENTAGE:</h2>
+        <h2 id="monthly_amount"></h2>
+        <h2 id="monthly_percent"></h2>
+      </div>
     </div>
+
     <section id="overview" class="flex"></section>
   </body>
 </html>
