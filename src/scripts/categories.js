@@ -7,8 +7,8 @@ let files_input = document.getElementById('csvFileInput');
 let category_input_element = document.getElementById('add_category_value');
 
 export async function loadCategories() {
-  let data = await api.optionsData();
   let isFileSelected = files_input.files.length != 0;
+  let data = await api.getOptionsData();
   categories.innerHTML = Object.keys(data)
     .map(key => `<div id='category'>${key}</div>`)
     .join('');
@@ -26,10 +26,5 @@ export async function loadCategories() {
 add_category_btn.addEventListener('click', async () => {
   api.send('saveCategory', category_input_element.value);
   category_input_element.value = '';
-
-  let data = await api.optionsData();
-  document.getElementById('categories').innerHTML = Object.keys(data)
-    .map(key => `<div id='category'>${key}</div>`)
-    .join('');
   loadCategories();
 });

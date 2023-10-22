@@ -14,18 +14,13 @@ TODO:
 3. ~~Import CSV and show it on table~~
 4. ~~Filter and calculate imported data and show~~
 5. ~~Spendings can be seen on budgetcard by category~~
-6. Everything is updateable from UI
+6. ~~Data is updateable from UI~~
 
-- EXTRA
-
-1. ~~Make adding filters more user friendly~~
-2. All saved data should be reviewable (month or year from now)
-3. Possible to pick and choose columns from csv (only if working with other csv files)
-4. Possible to filter by date (combining previous files together?)
-5. Images/Icons for some categories
-6. ~~Filter and Categories are changeable and removable~~
-7. Maybe combine budgetCards, adding filters and showing all spendings in one card ???
-8. ~~Add confirmation for safety when deleting category~~
-9. ~~Added PieChart~~
-
-BUGS:
+- FUTURE UPGRADE FOR PROJECT 
+1. Last month comparison with current month (year, quarter, maybe last year month vs this year month)
+2. Yearly expense tracker with different chart (example how much spent by monthly)
+3. Can choose colors for different things
+4. Can choose Images/Icons for categories
+5. Possible to work with different csv (Possible to pick and choose columns from csv)
+6. Possible to filter by date ( probably needs database integration or just add to file each time its read until end of year )
+7. Calculate all expenses when file is given, when total combined is not same as all spending added to categories then not all fields are taken into account then notify fields that are not accounted

@@ -1,8 +1,10 @@
 {
   "name": "costy",
+  "main": "main.js",
   "version": "1.0.0",
   "description": "budget app",
-  "main": "main.js",
+  "author": "`Silver Luhtoja",
+  "license": "MIT",
   "scripts": {
     "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,8 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/SilverLuhtoja/costy.git"
   },
-  "author": "`Silver Luhtoja",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SilverLuhtoja/costy/issues"
   },

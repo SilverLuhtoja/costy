@@ -49,7 +49,7 @@ csvFileInput.addEventListener('change', function (event) {
 });
 
 async function calculateExpenses(data) {
-  const optionsData = await api.optionsData();
+  const optionsData = await api.getOptionsData();
   let entries = Object.entries(optionsData);
   let SumUpCategories = {};
   let overAll = {};

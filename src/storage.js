@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { app } = require('electron');
 
 class Storage {
   fileName;
@@ -59,5 +60,6 @@ class Storage {
   }
 }
 
-let storage = new Storage('./src/resources/options.json');
-module.exports = { storage };
+const file_path = `${app.getPath('userData')}/options.json`;
+const storage = new Storage(file_path);
+module.exports = { storage, file_path };

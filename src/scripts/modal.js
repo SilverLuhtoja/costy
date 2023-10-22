@@ -17,7 +17,7 @@ function removeCategoryFilter(category_name, value) {
 }
 
 async function updateFilters(category_name) {
-  let data = await api.optionsData();
+  let data = await api.getOptionsData();
   let filterDiv = document.getElementById('modal_current_filters');
   let filters = data[category_name];
   filterDiv.innerHTML = 'FILTERS:';

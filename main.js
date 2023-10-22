@@ -1,6 +1,6 @@
-const { app, BrowserWindow, webContents } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const _ = require('./src/core/listeners');
+const _ = require('./src/core/listeners.js');
 
 // FOR FAST STYLING
 // const electronReload = require('electron-reload');
@@ -21,7 +21,7 @@ const createWindow = () => {
   });
 
   //   Open DevTools
-  if (isDev) win.webContents.openDevTools();
+  // if (isDev) win.webContents.openDevTools();
   win.loadFile('index.html');
 };
 

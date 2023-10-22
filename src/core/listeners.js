@@ -1,5 +1,6 @@
-const { ipcMain } = require('electron');
+const { app, ipcMain } = require('electron');
 const { storage } = require('../storage');
+const fs = require('fs');
 
 ipcMain.on('saveCategory', (event, categoryValue) => {
   storage.set(categoryValue, []);
@@ -19,4 +20,10 @@ ipcMain.on('removeCategoryFilter', (event, object) => {
   const key = Object.keys(object)[0];
   const value = object[key];
   storage.remove(key, value);
+});
+
+ipcMain.handle('read-user-data', (event, fileName) => {
+  const path = app.getPath('userData');
+  const buf = JSON.parse(fs.readFileSync(`${path}/${fileName}`, 'utf8'));
+  return buf;
 });
