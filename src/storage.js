@@ -61,4 +61,4 @@ class Storage {
 
 const file_path = `${app.getPath('userData')}/options.json`;
 const storage = new Storage(file_path);
-module.exports = { storage, file_path };
+module.exports = { storage };
